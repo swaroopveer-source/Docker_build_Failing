@@ -1,3 +1,17 @@
-FROM alpine:latest
+FROM nvidia/cuda:13.0.2-cudnn-runtime-ubuntu24.04
 
-CMD ["echo", "Hello from Docker"]
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    python3 \
+    python3-pip
+
+WORKDIR /app
+
+COPY requirements.txt .
+
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+CMD ["python3", "handler.py"]
