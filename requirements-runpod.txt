@@ -1,1 +1,5 @@
-runpod
+runpod>=1.7.0
+fastapi
+uvicorn
+requests
+numpy
