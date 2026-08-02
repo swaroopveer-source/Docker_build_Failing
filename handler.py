@@ -1,9 +1,6 @@
 import runpod
 
 def handler(job):
-    return {
-        "message": "Builder test successful",
-        "input": job["input"]
-    }
+    return {"message": "Hello from RunPod!"}
 
 runpod.serverless.start({"handler": handler})
